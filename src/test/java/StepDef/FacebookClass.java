@@ -1,7 +1,10 @@
 package StepDef;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -23,14 +26,15 @@ import junit.framework.Assert;
 public class FacebookClass {
 	WebDriver driver;
 	CucumberBase base = new CucumberBase();
+	CucumberPojo pj = new CucumberPojo();
 	
 	@Given("Open the facebook pages")
-	public void open_the_facebook_pages() {
-
+	public void open_the_facebook_pages() throws IOException {
 		
 		driver=base.launchBrowser();
-		base.urlLoad(driver, "https://www.facebook.com/");
+		base.urlLoad(driver,"https://www.facebook.com/");
 		base.browserMaxim(driver);
+		base.implicitWait();
 		
 		
 	}  
@@ -41,13 +45,13 @@ public class FacebookClass {
 @When("Enter the username and password")
 public void enter_the_username_and_password(DataTable dataTable) 
 {
-	CucumberPojo pj = new CucumberPojo();
+	
 	PageFactory.initElements(driver, pj);
 	Map<Object, Object> asMap = dataTable.asMap(String.class, String.class);
 	 WebElement accept =
 			 driver.findElement(By.xpath("//button[@title='Alle akzeptieren']"));
 	 		 accept.click();
-	System.out.println("inside map statement");
+	
 	 base.send(pj.getTxtUsername(), String.valueOf(asMap.get("username")));
 	 System.out.println(String.valueOf(asMap.get("username")));
 	 base.send(pj.getTxtPassword(), String.valueOf(asMap.get("password")));
@@ -62,5 +66,9 @@ public void enter_the_username_and_password(DataTable dataTable)
 		Assert.assertEquals("Facebook – Anmelden oder Registrieren", s);
 
 	}
+	
+	
+
+	
 
 }
