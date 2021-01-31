@@ -14,8 +14,6 @@ import io.cucumber.junit.CucumberOptions;
 	  ="src/test/resources/Features/Facebook.feature",glue={"StepDef"}, dryRun =
 	  true,monochrome = true,plugin = {"pretty","json:target/MyReports/report.json"}, tags = "@datatable")
 	 
-	
-	 
 	public class TestRunner 
 	{	
 	

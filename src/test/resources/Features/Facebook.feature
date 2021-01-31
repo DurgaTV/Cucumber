@@ -11,7 +11,7 @@ Scenario: Facebook login with Invalid username and password
    
     When Enter the username and password
     |username|durga.karthik1328@gmail.com|
-    |password|Srfhghg|
+    |password|Sreshta@20|
     
     Then Validate the login username	
     
