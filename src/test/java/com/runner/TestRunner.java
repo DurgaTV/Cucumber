@@ -12,8 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 	
 	  @CucumberOptions(features
 	  ="src/test/resources/Features/Facebook.feature",glue={"StepDef"}, dryRun =
-	  true,monochrome = true,tags = "@datatable")
-
+	  true,monochrome = true,plugin = {"pretty","json:target/MyReports/report.json"}, tags = "@datatable")
 	 
 	
 	 
